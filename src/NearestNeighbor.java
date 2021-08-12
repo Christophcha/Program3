@@ -15,27 +15,27 @@ public class NearestNeighbor {
 
 		// prints header
 		System.out.println("Programming Fundamentals \nNAME: Christopher Chakchay \nPROGRAMMING ASSIGNMENT 3 \n");
-		
+
 		// prompts user to enter training file until they call the correct file.
 		System.out.print("Enter the name of the training file: ");
 		String training = scan.nextLine();
-		
+
 		while (!training.equals("iris-training-data.csv")) {
 			System.out.print("There is no file under that name, please enter training file again: ");
 			training = scan.nextLine();
 		}
-		
+
 		// prompts user to enter testing file until they call the correct file.
 		System.out.print("Enter the name of the testing file: ");
 		String testing = scan.nextLine();
-		
+
 		while (!testing.equals("iris-testing-data.csv")) {
 			System.out.print("There is no file under that name, please enter testing file again: ");
 			testing = scan.nextLine();
 		}
 
 		System.out.println("");
-		
+
 		// imports training file
 		File trainingFile = new File(
 				"C:\\Users\\Christopher\\eclipse-workspace\\Program3\\src\\iris-training-data.csv");
@@ -81,7 +81,7 @@ public class NearestNeighbor {
 	}
 
 	public static double distance(double[] testing, double[] training) {
-		
+
 		// distance algorithm
 		double distance = Math.sqrt((Math.pow((testing[0] - training[0]), 2) + Math.pow((testing[1] - training[1]), 2)
 				+ Math.pow((testing[2] - training[2]), 2) + Math.pow((testing[3] - training[3]), 2)));
@@ -110,7 +110,7 @@ public class NearestNeighbor {
 	public static void classify(double[][] testingValues, double[][] trainingValues, String[] trainingClass,
 			String[] testingClass) {
 
-		String[] predictedValues = new String[75];
+		String[] predictedValues = new String[75]; // predicted value of each row
 		double closestDistance = Double.MAX_VALUE;
 		double currentDistance;
 		int currentIndex = 0;
@@ -118,11 +118,12 @@ public class NearestNeighbor {
 		double[] testingRow = new double[4];
 		double[] trainingRow = new double[4];
 
+		// iterates through testing rows
 		for (int i = 0; i < testingValues.length; i++) {
 			for (int j = 0; j < testingValues[0].length; j++) {
 				testingRow[j] = testingValues[i][j];
 			}
-
+			// iterates through training rows
 			for (int k = 0; k < trainingValues.length; k++) {
 				for (int l = 0; l < trainingValues[0].length; l++) {
 					trainingRow[l] = trainingValues[k][l];
@@ -141,10 +142,12 @@ public class NearestNeighbor {
 
 		}
 		System.out.println("EX#: TRUE LABEL, PREDICTED LABEL");
-		
+
+		// prints rows, testing class and predicted class of each row
 		for (int i = 0; i < predictedValues.length; i++) {
 			System.out.println((i + 1) + ": " + testingClass[i] + " " + predictedValues[i]);
 		}
+		// imports accuracy method
 		accuracy(testingClass, predictedValues);
 	}
 
