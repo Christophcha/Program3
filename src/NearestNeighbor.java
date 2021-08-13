@@ -1,3 +1,9 @@
+/* Christopher Chakchay
+ * August 13th 2021
+ * Programming fundamentals
+ * Summer 2021
+ * Programming Assignment 3 - Machine Learning
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
